@@ -1,0 +1,62 @@
+{
+  "name": "factu-estimados",
+  "version": "1.0.0",
+  "description": "Sistema web de estimados de construccion (etapas, materiales y mano de obra) con ganancia por etapa y exportacion a PDF.",
+  "main": "main.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node server/index.js",
+    "electron": "electron .",
+    "icon": "node scripts/make-icon.js",
+    "dist": "electron-builder --win",
+    "dist:portable": "electron-builder --win portable"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-session": "^2.1.1",
+    "express": "^4.22.2"
+  },
+  "devDependencies": {
+    "electron": "^43.4.0",
+    "electron-builder": "^25.0.0",
+    "png-to-ico": "^3.0.0",
+    "sharp": "^0.33.0"
+  },
+  "build": {
+    "appId": "com.factu.estimados",
+    "productName": "Factu",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "server/**",
+      "public/**",
+      "package.json"
+    ],
+    "asar": true,
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Factu",
+      "uninstallDisplayName": "Factu — Estimados de Construcción"
+    }
+  }
+}

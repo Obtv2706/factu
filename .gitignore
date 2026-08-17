@@ -1,0 +1,10 @@
+node_modules/
+data/
+dist/
+build/icon.png
+build/icon.ico
+build/icon.svg
+.env
+*.log
+.DS_Store
+test/dbg-*.js
